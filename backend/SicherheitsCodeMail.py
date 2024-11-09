@@ -3,11 +3,11 @@ import ssl
 
 smtp_server = "smtp.office365.com"
 port = 587
-sender_email = "nmikhaeel00@gmail.com"
-password = "KarpovMikhaeel1"
+sender_email = "Your-Mail"
+password = "password"
 
 
-receiver_email = "SEPVgruppeB@outlook.de"
+receiver_email = "receiver-mail"
 message = """\
 Subject: Test Email
 
@@ -20,8 +20,8 @@ try:
         server.ehlo()
         server.starttls(context=context)
         server.ehlo()
-        server.login("SEPVgruppeB@outlook.de", "KarpovMikhaeel1")
-        server.sendmail("SEPVgruppeB@outlook.de", "nmikhaeel00@gmail.com", message)
+        server.login("Your-Mail", "password")
+        server.sendmail("Your-Mail", "receiver-mail", message)
         print("Email sent successfully!")
 except Exception as e:
     print("Error occurred while sending email:", e)
