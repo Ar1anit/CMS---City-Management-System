@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zwei-Faktor-Authentifizierung</title>
+    <link href="../static/login-new.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icon -->
+    <div class="fadeIn first" style="margin-top: 10px;">
+      <img src="../static/images/LogoF.svg" alt="SEP Gruppe-B Logo" id="icon">
+      <h3>{{ username }}<br>Kontrolliere dein Postfach</h3>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post">
+      <input type="text" id="code" class="fadeIn third" name="password" placeholder="Auth code" required>
+      <input type="submit" class="fadeIn fourth" name="submit" value="Anmelden">
+    </form>
+
+    <!-- Passowrd renew
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Passwort vergessen?</a>
+    </div>-->
+
+  </div>
+</div>
+<a href="http://www.freepik.com" style="display: none;">Designed by Freepik</a>
+</body>
+</html>

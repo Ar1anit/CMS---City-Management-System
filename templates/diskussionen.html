@@ -1,0 +1,123 @@
+<!-- Vorlage für die gesamte Seite -->
+{% include 'chat_bot.html' %}
+
+<head>
+    <title>Diskussionsforum</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/favouriteDatasets.css">
+        <link rel="stylesheet" type="text/css" href="../static/Startpage.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+    <script src="../static/favouriteDatasets.js" defer></script>
+    <script src="../static/diskussion.js" defer></script>
+</head>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5"
+     style="background: linear-gradient(to left, #000000 13%, #FFFFFF );">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img style="width: 80px; height: 80px;" src="../static/images/LogoF.png" alt="Logo">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dataset">Datensätze</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/diskussionen">Diskussionsforum</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Mein Profil
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item">Hallo, {{ vorname }}</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/profile/{{ username }}">Zur Profilansicht</a></li>
+                        <li><a class="dropdown-item" href="/fav-datasets">Lieblingsdatensätze</a></li>
+                        <li><a class="dropdown-item" href="/tickets">Support-Tickets</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/agb">AGBs</a></li>
+                        <li><a class="dropdown-item" href="/logout">Abmelden</a></li>
+                    </ul>
+            </ul>
+            <div class="d-flex" role="search" style="border: none; padding-top: 10px; margin-right: 40px;">
+                <button style="background-color: black; color: white; border: none; border-radius: 9px; width: 100%;
+                    transition: background-color 0.3s, color 0.3s;"
+                        onmouseover="this.style.backgroundColor = 'white'; this.style.color = 'black';"
+                        onmouseout="this.style.backgroundColor = 'black'; this.style.color = 'white';" onclick="showCreateDiskussion();">
+                    <span style="font-size: 22px;">+</span>
+                    Neue Diskussion
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<center>
+    <h1 style="margin-bottom: 50px; font-size: 62px;" id="support-heading">Diskussionen</h1>
+</center>
+
+<div class="create-ticket-container hidden" style="display: none;" id="create-ticket-container">
+    <center>
+    <input type="hidden" name="ticket-author" id="ticket-author" value="{{ username }}"/>
+    <input class="text-input" placeholder="Name der Diskussion" tabindex="1" name="ticket-name" id="ticket-name"/><br>
+    <input class="text-input" placeholder="Kategorie der Diskussion" tabindex="2" name="ticket-short-desc" id="ticket-short-desc"/><br>
+    <textarea class="text-input" placeholder="Thema der Diskussion (Beschreibung)" style="height: 20vh; margin-bottom: 10px; resize: none;" tabindex="3" name="ticket-desc" id="ticket-desc"></textarea><br>
+    <button class="create-ticket-button red-button" tabindex="5" onclick="showCreateDiskussion();">Abbruch</button>
+    <button class="create-ticket-button green-button" tabindex="4" onclick="postDiscussion();">Diskussion öffnen</button>
+</center>
+</div>
+
+<div class="container-lg">
+<div class="container-lg">
+    {% if diskussionen %}
+        {% for diskussion in diskussionen %}
+            <div class="row">
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class="card-header">
+                        {{ diskussion.title }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ diskussion.description }}</h5>
+                        <p class="card-text">{{ diskussion.author }}</p>
+                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                            <div class="btn-group mr-2" role="group" aria-label="First group">
+                                <button onclick="location.href='/diskussion/{{ diskussion.id }}'"
+                                        class="buttonDat">Zur Diskussion
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Es gibt derzeit keine Diskussionen.</p>
+    {% endif %}
+</div>
+
+

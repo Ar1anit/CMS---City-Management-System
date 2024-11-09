@@ -1,0 +1,91 @@
+ <title>Chat</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../static/chat_style.css">
+<link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+<script src="../static/chat.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+
+<body oncontextmenu="return false;">
+
+<div class="chats-container">
+    <div style="margin-bottom: 30px" class="chats-container-single-chat-spacer">
+        <a class="logo" href="/">
+            <img style="width: 100px; height: 100px; " src="../static/images/LogoF.png" alt="Logo">
+        </a>
+    </div>
+    {% for current in range(0, len_all_users) %}
+    <button class="chats-single-chat" id="1" onclick="startChat('{{ all_users[current] }}');">
+        <div class="chat-profile-picture"></div>
+        <div class="chats-single-chat-name">{{ all_users[current] }}</div>
+    </button>
+    {% endfor %}
+    <hr style="margin-top: 20px">
+    <button class="gruppe-chat" onclick="openCreateGroupPopup();">
+        <div class="gruppe-chat-name"> + Gruppen Chat</div>
+    </button>
+   <button class="chats-single-chat gruppen-button" style="display: none;"></button>
+
+
+    {% for current in range(0, len_user_gcs) %}
+    <button class="chats-single-chat" id="1" onclick="openGroupChat('{{ user_gcs[current] }}');">
+        <div class="chat-profile-picture"></div>
+        <div class="chats-single-chat-name">{{ user_gcs[current] }}</div>
+    </button>
+
+    {% endfor %}
+</div>
+
+
+<div class="chat-container" id="chat-bot-container">
+    <div class="chat-header-container">
+        Chat
+    </div>
+    <div class="chat-content" id="chatbot-chat-content">
+        <div class="message-container fade-in-chat-text-box">
+            <h1 class="recv-text-bubble">Hier Kannst du mit deinen freunden chaten</h1>
+        </div>
+    </div>
+    <input type="text" class="chat-input-style" id="chat-message-input">
+    <button class="chat-send-button" onclick="send_message();">Senden</button>
+</div>
+
+    <!-- Popup-Fenster für Gruppenchat erstellen -->
+    <div class="popup-container">
+    <div class="popup" id="create-group-popup">
+        <div class="popup-content left-content">
+            <h3>Gruppenchat erstellen</h3>
+            <input type="text" id="group-name-input" placeholder="Gruppenname eingeben">
+            <input type="text" id="group-members-input" placeholder="Mitglieder hinzufügen" disabled>
+            <button onclick="createGroup()">Gruppenchat erstellen</button>
+            <button onclick="closeCreateGroupPopup();">Abbrechen</button>
+        </div>
+    </div>
+
+    <div class="popup" id="user-list-popup">
+        <div class="popup-content right-content">
+            <h3>Füge andere Nutzer hinzu</h3>
+            <ul id="user-list"></ul>
+            {% for user in all_users %}
+
+                <button onclick="add_user_to_group_chat('{{ user }}')" style="width: 90%; height: 50px;">{{ user }}</button><br>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+<span id="message-sender" style="display: none;">{{ username }}</span>
+
+<div class="popup2" id="edit-message-popup">
+    <div class="popup2-content">
+        <h3>Nachricht bearbeiten</h3>
+        <input type="text" id="edited-message-input" placeholder="Nachricht eingeben">
+        <button onclick="updateMessage()">Aktualisieren</button>
+        <button onclick="closeEditMessagePopup()">Abbrechen</button>
+        <input id="update-timestamp-hidden" style="display: none;">
+        <input id="update-message-hidden" style="display: none;">
+    </div>
+</div>
+</body>

@@ -1,0 +1,11 @@
+.git
+.gitignore
+.idea
+docker-compose.yml
+Dockerfile
+SEP_Projektmappe_Gruppe_B_2704.docx
+TODO
+rerun.py
+start.sh
+fw-docker.py
+application.tar

@@ -1,0 +1,9 @@
+{
+  "dataserver_ip": "172.20.0.2",
+  "dataserver_port": 3306,
+  "dataserver_uname": "root",
+  "dataserver_password": "1234",
+  "dataserver_database": "SEP",
+  "application_ip": "0.0.0.0",
+  "application_port": 8080
+}

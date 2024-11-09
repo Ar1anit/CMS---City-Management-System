@@ -1,0 +1,596 @@
+/*
+
+All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310).
+
+The 'supports' rule will only run if your browser supports CSS grid.
+
+Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
+
+*/
+
+/* Base Styles */
+
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 9px;
+}
+
+/* Profilheader */
+.profile-header {
+    display: flow;
+    align-self: center;
+    align-items: center;
+}
+
+.profile-header img {
+    flex-shrink: 0;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(to bottom, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    width: 100px;
+    height: 100px;
+}
+
+.profile-header h1 {
+    margin-top: 10px;
+}
+
+/* Profilinhalt */
+.profile-content h2 {
+    margin-top: 20px;
+}
+
+.profile-content p {
+    margin-bottom: 10px;
+}
+
+.profile-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-content li {
+    margin-bottom: 5px;
+}
+
+/* Profilaktionen */
+.profile-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+.item{
+    margin: 10px;
+    background-color: #FFFFFF;
+    border-radius: 9px;
+    width: auto;
+     padding: 10px 10px;
+}
+
+.friends-button,
+.edit-button,
+.favourite-datasets-button,
+.chat-button{
+    padding: 10px 20px;
+    color: #030000;
+    border: 2px solid;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    min-width: 150px;
+}
+
+.friends-button:hover,
+.edit-button:hover,
+.favourite-datasets-button:hover,
+.chat-button:hover{
+    transform: translateY(-5px);
+}
+
+
+@keyframes popupOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes popupClose {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.popup.close-animation {
+  animation: popupClose 0.5s forwards;
+}
+
+
+.popup-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-container.show {
+  display: flex;
+  animation: fadeIn 0.3s forwards;
+}
+
+.popup {
+  background-color: #fff;
+  padding: 20px;
+  width: 500px;
+    height: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  overflow: auto;
+    margin: 10px;
+     animation: popupOpen 0.5s forwards;
+}
+
+
+
+.popup-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.popup-content input[type="text"] {
+    width: 100%;
+    padding: 12px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 9px;
+}
+
+.popup-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content li {
+    padding: 5px 0;
+    display: block;
+}
+
+.popup-content .close-btn {
+
+    border: 2px solid black;
+    background-color: #000000;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 9px;
+}
+
+.popup-content .close-btn:hover {
+    border: 2px solid;
+}
+
+.popup-content .friend-delete,
+.popup-content .friend-add{
+    border: 2px solid #030000;
+    border-radius: 9px;
+    height: 40px;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+}
+
+.popup-content .friend-item,
+.popup-content .user-item{
+    background-color: #f2f2f2;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between; /* Updated property */
+    align-items: center;
+    margin-bottom: 9px;
+    flex-wrap: nowrap;
+}
+
+.friend-item.animate-out {
+    animation: fadeOut 0.3s ease-in;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.popup-content .friend-pb,
+.popup-content .user-pb{
+    border-radius: 50%;
+    border: 2px transparent;
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+.popup-content .friends-name,
+.popup-content .user-name{
+    margin-right: auto; /* Updated property */
+    flex-shrink: 0;
+    color: black;
+    text-decoration: none;
+}
+
+/*Profile Edit*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+margin-right: 10px;
+
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #000000;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.edit-field{
+
+    background-color: #FFFFFF;
+    border-radius: 9px;
+    z-index: 999;
+    margin-bottom: 10px;
+}
+input[type="text"] {
+    width: 60%;
+    padding: 12px 10px;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 9px;
+    margin: 3px 0;
+    margin-right: 3px;
+}
+input[type="file"] {
+    cursor: pointer;
+    width: 60%;
+    padding: 12px 10px;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 9px;
+    margin: 3px 0;
+    margin-right: 3px;
+    color: #6a6767;
+
+}
+input[type="password"] {
+    cursor: pointer;
+    width: 60%;
+    padding: 12px 10px;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 9px;
+    margin: 3px 0;
+    margin-right: 3px;
+    color: #6a6767;
+
+}
+
+
+
+    .edit-field button {
+        height: 40px;
+
+        color: black;
+        border: 2px solid transparent;
+        padding: 5px 10px;
+        border-radius: 9px;
+       transition: border-color 0.3s, color 0.3s;
+    }
+
+    .edit-field button:first-child:hover {
+        border: 2px solid red;
+        color: red;
+    }
+
+    .edit-field button:last-child:hover {
+        border: 2px solid green;
+        color: green;
+
+    }
+/*Glocke*/
+.bell-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.bell-icon {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.bell-icon.animate{
+    animation-name: bell-rotate;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bell-rotate {
+    0% {
+        transform: rotate(0);
+    }
+    33% {
+        transform: rotate(20deg);
+    }
+    66%{
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+/*Friend-Requests*/
+.menu {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    width: 500px;
+    max-height: 450px;
+    min-height: 350px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+    overflow: auto;
+    z-index: 990;
+}
+
+
+.bell-container.open .menu {
+  display: block;
+  animation: slide-in 0.3s ease;
+}
+
+.bell-container.close .menu {
+  animation: slide-out 0.3s ease ;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+    display: none;
+  }
+}
+
+.friend-request {
+    background-color: #f2f2f2;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between; /* Updated property */
+    align-items: center;
+    margin-bottom: 9px;
+    flex-wrap: nowrap;
+
+}
+
+.friend-request .friend-pb {
+    border-radius: 50%;
+    border: 2px transparent;
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+.friend-request .friends-name {
+    margin-top: 15px;
+    margin-right: auto; /* Updated property */
+    flex-shrink: 0;
+}
+
+.friend-request .friend-add {
+    border: 2px solid green;
+    border-radius: 9px;
+    height: 40px;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+    background-color: green;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    flex-shrink: 0;
+}
+
+.friend-request .friend-decline {
+    border: 2px solid #cc0000;
+    border-radius: 9px;
+    height: 40px;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #cc0000;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    flex-shrink: 0;
+}
+
+.friend-request .friend-decline:hover,
+.friend-request .friend-add:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+    border: 2px solid;
+}
+
+
+.friend-request.animate-out {
+    animation-name: slide-out;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        display: none;
+    }
+}
+
+
+/*Anzeige von Datensätzen im Profil*/
+.dataset-container {
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 9px;
+}
+
+
+.graph-button,
+.diagramm-button{
+    padding: 10px 20px;
+    color: #030000;
+    border: 2px solid;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    width: 150px;
+}
+
+.graph-button:hover,
+.diagramm-button:hover{
+    transform: translateY(-5px);
+}
+
+.anzeige-container{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: white;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    max-width: 800px;
+    min-height: 450px;
+    border-radius: 9px;
+}
+

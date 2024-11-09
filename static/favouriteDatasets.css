@@ -1,0 +1,156 @@
+.buttonDat {
+    background-color: #030000;
+    color: white;
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Add a hover effect for buttons */
+.buttonDat:hover {
+    opacity: 0.8;
+    background-color: white;
+    color: black;
+}
+/* Add padding to containers */
+
+.navbar-brand img {
+    filter: invert(0%);
+    transition: filter 0.5s;
+    border: none;
+}
+
+.navbar-brand img:hover {
+    filter: invert(50%);
+}
+.icon{
+    height: 5px;
+    width: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+
+}
+
+.card{
+    border-radius: 0;
+}
+
+/* Ab Hier Startpagelogged*/
+.dropdown-menu .dropdown-item:hover {
+    color: black;
+    transition: color 0.5s ease;
+}
+
+.buttonSearch {
+    background-color: #030000;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Add a hover effect for buttons */
+.buttonSearch:hover {
+    opacity: 0.8;
+    background-color: white;
+    color: black;
+}
+
+
+/* like-button*/
+
+.like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.like-button.animated {
+    -webkit-animation: pop 0.9s both;
+    animation: pop 0.9s both;
+}
+.like-button svg {
+    opacity: 1;
+}
+.like-button svg path {
+    fill: #333;
+    transition: fill .4s ease-out;
+}
+.like-button.active svg path {
+    fill: #ce0267;
+}
+
+@-webkit-keyframes pop {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+
+

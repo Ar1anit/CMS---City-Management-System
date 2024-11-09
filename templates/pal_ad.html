@@ -1,0 +1,93 @@
+<style>
+
+    ad-container {
+        position: absolute;
+        z-index: 9999;
+        width: 206px;
+        height: 501px;
+        margin-left: calc(100% - 225px);
+        border: 2px dashed red;
+        animation: 1.5s infinite annoying-blinking-border;
+        animation-delay: .3s;
+        transform: translateY(-50%);
+    }
+
+    .ad-image {
+        max-height: 500px;
+    }
+
+    .x {
+        position: absolute;
+        margin-left: calc(100% - 1rem);
+        border: 1px solid black;
+    }
+
+    .annoying-text {
+        position: absolute;
+        width: 100%;
+    }
+
+    .shown-on-top {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        animation: 1s infinite annoying-blinking;
+    }
+
+    .shown-in-the-middle {
+        margin-top: 100%;
+        font-size: 1.1rem;
+        animation: 1.2s infinite annoying-blinking;
+        animation-delay: .4;
+    }
+
+    .shown-on-bottom {
+        margin-top: 200%;
+        font-size: 1.1rem;
+        animation: 1s infinite annoying-blinking;
+        animation-delay: .5;
+        margin-left: 25%;
+    }
+
+    @keyframes annoying-blinking {
+        0% {
+            color: red;
+        }
+        50% {
+            color: blue;
+        }
+
+        100% {
+            color: red;
+        }
+    }
+
+    @keyframes annoying-blinking-border {
+        0% {
+            border-color: red;
+        }
+        50% {
+            border-color: yellowgreen;
+        }
+
+        100% {
+            border-color: red;
+        }
+    }
+
+
+</style>
+<ad-container id="ad-pop-up">
+    <span class="x" onclick="hideAnnoyingPopUp();">X</span>
+    <span class="annoying-text shown-on-top">Heiße Professoren</span>
+    <span class="annoying-text shown-in-the-middle">Klicke hier um so richtig was zu lernen!</span>
+    <span class="annoying-text shown-on-bottom">In deiner Nähe!</span>
+    <a href="https://paluno.uni-due.de" target="_blank"><img class="ad-image" src="../static/images/pal.png" alt="ad"></a>
+</ad-container>
+
+<script>
+    let ad_pop_up = document.getElementById("ad-pop-up");
+
+    function hideAnnoyingPopUp() {
+        ad_pop_up.style.display = "none";
+    }
+</script>

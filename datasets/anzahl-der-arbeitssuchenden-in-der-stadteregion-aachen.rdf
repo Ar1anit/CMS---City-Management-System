@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:dcatde="http://dcat-ap.de/def/dcatde/"
+>
+  <dcat:Dataset rdf:about="https://ckan.open.nrw.de/dataset/916b5862-aabb-415b-be44-fae27625c80c">
+    <dct:title>Anzahl der Arbeitssuchenden in der Städteregion Aachen</dct:title>
+    <dct:description>Der Datensatz beinhaltet die Anzahl der arbeitssuchenden erwerbsfähigen Leistungsberechtigten (ELB) in der Städteregion Aachen je nach Ausbildung. &#13;
+&#13;
+(Stand April 2022)</dct:description>
+    <dcat:landingPage rdf:resource="Statistik%20der%20Bundesagentur%20für%20Arbeit%2C%20Titel:%20Strukturzeitreihe%20der%20Grundsicherung%20auf%20Gemeindeebene%2C%20Region:%20StädteRegion%20Aachen.%20https://statistik.arbeitsagentur.de"/>
+    <dct:identifier>916b5862-aabb-415b-be44-fae27625c80c</dct:identifier>
+    <dcat:keyword>arbeitsuchend</dcat:keyword>
+    <dcat:keyword>ausbildung</dcat:keyword>
+    <dcat:keyword>bevölkerung</dcat:keyword>
+    <dcat:keyword>erwerbsfähig</dcat:keyword>
+    <dcat:keyword>städteregion</dcat:keyword>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-01-18T10:31:35.285499</dct:issued>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-01-18T10:31:35.285509</dct:modified>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/SOCI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/REGI"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+    <adms:identifier>916b5862-aabb-415b-be44-fae27625c80c</adms:identifier>
+    <dcat:contactPoint>
+      <vcard:Organization rdf:nodeID="N9d5f70170c924e7a98c15c45971dc34f">
+        <vcard:fn>Bundesagentur für Arbeit</vcard:fn>
+        <vcard:hasEmail rdf:resource="mailto:Statistik-Service-West@arbeitsagentur.de"/>
+      </vcard:Organization>
+    </dcat:contactPoint>
+    <dct:publisher>
+      <foaf:Organization rdf:about="https://ckan.open.nrw.de/organization/81f54baa-27e6-4efa-be13-b75bf7279c68">
+        <foaf:name>Aachen</foaf:name>
+      </foaf:Organization>
+    </dct:publisher>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.open.nrw.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/86292a87-849e-4ae4-b07b-08279bad63f6">
+        <dct:title>Arbeitssuchende 2020</dct:title>
+        <dct:description>Anzahl der arbeitssuchenden erwerbsfähigen Leistungsberechtigten in den Monaten 01-20 bis 12-20.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://offenedaten.aachen.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/86292a87-849e-4ae4-b07b-08279bad63f6/download/arbeitsuchende-erwerbsfahige-leistungsberechtigte_20.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-29T13:42:42.018718</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-29T13:42:41.990790</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1164.0</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.open.nrw.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/020fc5c1-12c0-443e-9db5-4862a249b213">
+        <dct:title>Arbeitssuchende 2019</dct:title>
+        <dct:description>Anzahl der arbeitssuchenden erwerbsfähigen Leistungsberechtigten in den Monaten 01-19 bis 12-19.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://offenedaten.aachen.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/020fc5c1-12c0-443e-9db5-4862a249b213/download/arbeitsuchende-erwerbsfahige-leistungsberechtigte_19.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-29T13:41:57.122957</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-06-29T13:41:57.091918</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1081.0</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.open.nrw.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/5bbbf740-c124-4b2b-ac9b-1a1f4c814028">
+        <dct:title>Arbeitssuchende 2022</dct:title>
+        <dct:description>Anzahl der arbeitssuchenden erwerbsfähigen Leistungsberechtigten für das Jahr 2021.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://offenedaten.aachen.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/5bbbf740-c124-4b2b-ac9b-1a1f4c814028/download/anzahl-der-arbeitssuchenden-in-der-stadteregion-aachen22.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-07T09:10:50.495613</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-07T09:14:51.302159</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">724.0</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcat:distribution>
+      <dcat:Distribution rdf:about="https://ckan.open.nrw.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/820a8d5e-b97e-43f5-ae9d-f54fb8029de7">
+        <dct:title>Arbeitssuchende 2021</dct:title>
+        <dct:description>Anzahl der arbeitssuchenden erwerbsfähigen Leistungsberechtigten für das Jahr 2021.</dct:description>
+        <dct:license rdf:resource="http://dcat-ap.de/def/licenses/dl-by-de/2.0"/>
+        <dcat:accessURL rdf:resource="https://offenedaten.aachen.de/dataset/916b5862-aabb-415b-be44-fae27625c80c/resource/820a8d5e-b97e-43f5-ae9d-f54fb8029de7/download/anzahl-der-arbeitssuchenden-in-der-stadteregion-aachen21.csv"/>
+        <dcat:mediaType>text/csv</dcat:mediaType>
+        <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+        <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-12-28T10:40:48.278902</dct:issued>
+        <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-07T09:10:01.951005</dct:modified>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1192.0</dcat:byteSize>
+      </dcat:Distribution>
+    </dcat:distribution>
+    <dcatde:contributorID rdf:resource="http://dcat-ap.de/def/contributors/openNRW"/>
+    <dcatde:contributorID rdf:resource="http://offenedaten.aachen.de"/>
+    <dcatde:maintainer>
+      <foaf:Organization rdf:nodeID="N0ec46c33cd1448889a6ed33fb6962123">
+        <foaf:name>Bundesagentur für Arbeit</foaf:name>
+        <foaf:mbox>Statistik-Service-West@arbeitsagentur.de</foaf:mbox>
+      </foaf:Organization>
+    </dcatde:maintainer>
+    <dct:creator>
+      <foaf:Organization rdf:nodeID="N6fe4290bd6fb43dcaf5bc6040f0a0fe6">
+        <foaf:name>Jobcenter der StädteRegion Aachen</foaf:name>
+        <foaf:mbox>Jobcenter-Aachen.Controlling@jobcenter-ge.de</foaf:mbox>
+      </foaf:Organization>
+    </dct:creator>
+  </dcat:Dataset>
+</rdf:RDF>

@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="../static/chat_bot_style.css">
+<script src="../static/chat_bot.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+
+<div class="chatbot-container" id="chat-bot-container">
+    <div class="chat-header-container">
+        ChatBot - Support
+        <div class="open-chat-button" id="open-chat-button-arrow" onclick="chatbot_open();"><img src="../static/images/arrow.png" width="25px;"></div>
+    </div>
+    <div class="chatbot-content" id="chatbot-chat-content">
+        <div class="message-container fade-in-chat-text-box">
+            <div class="recv-text-bubble">Hier kannst du dem Chatbot-Support Fragen stellen.</div>
+        </div>
+    </div>
+    <input type="text" class="chat-bot-input-style" id="chat-message-input">
+    <button class="chat-bot-send-button" onclick="send_message();">Senden</button>
+</div>
+

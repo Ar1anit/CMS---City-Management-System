@@ -1,0 +1,314 @@
+{% include 'chat_bot.html' %}
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<head>
+    <title>Datensätze</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/Startpage.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+    <script src="../static/datensaetze.js" defer></script>
+</head>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5"
+     style="background: linear-gradient(to left, #000000 13%, #FFFFFF );">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img style="width: 80px; height: 80px;" src="../static/images/LogoF.png" alt="Logo">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/dataset">Datensätze</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/diskussionen">Diskussionsforum</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Mein Profil
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item">Hallo, {{ vorname }}</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/profile/{{ username }}">Zur Profilansicht</a></li>
+                        <li><a class="dropdown-item" href="/fav-datasets">Lieblingsdatensätze</a></li>
+                        <li><a class="dropdown-item" href="/tickets">Support-Tickets</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/agb">AGBs</a></li>
+                        <li><a class="dropdown-item" href="/logout">Abmelden</a></li>
+                    </ul>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mb-5">
+    <form class="d-flex" role="search" style="border: none; width: 40% " method="post">
+        {% if not is_searching %}
+            <select style=" border-color: #e5e5e5; margin-right: 5px; border-radius: 6px" name="key">
+                {% for header in dataset[1][0] %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+        <input class="form-control me-2" type="text" placeholder="Datensätze suchen" style="" name="search">
+        <button class="buttonSearch" style=" border-radius: 9px; width: 20%">Suche</button>
+    </form>
+
+
+</div>
+
+<div class="container-lg table-design">
+    <div class="row row-cols-1">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-header">
+                <img style="width: 60px; height: 60px; border-radius: 9px" src="../static/images/dataset.png" alt="icon">
+                {{ dataset[0] }} <!-- Name of the file -->
+                <button class="buttonExport" style="border-radius: 9px" onclick="openExportPopup();">Exportieren</button>
+                <button class="sunburst-button">
+                    <img class="sunburst" src="../static/images/sunburst.png">
+                </button>
+                <button class="balken-button" onclick="openPopup()">
+                    <img class="balken" src="../static/images/balken.png">
+                </button>
+            </div>
+            <div style="overflow: auto" class="card-body">
+                <!-- Create
+        <h5 class="card-title">DataBank</h5>
+         <div class="openBtn">
+              <button class="buttonCreate btn btn-success" onclick="openForm()"><strong>Create</strong></button>
+            </div>
+            <div class="loginPopup">
+              <div class="formPopup" id="popupForm">
+                <form class="formContainer">
+                  <h2>Create Your Data</h2>
+                  {% for header in dataset[1][0] %}
+                  <br>
+                  <label>
+                    <strong>{{header}}</strong>
+                  </label>
+                  <input type="text" id="valueAdd" placeholder="Add your value" name="value" required>
+                  {% endfor %}
+                  <button type="submit" class="buttonCreate btn btn-success">CREATE</button>
+                  <button type="button" class="buttonDelete btn btn-danger" onclick="closeForm()">Close</button>
+                </form>
+              </div>
+            </div>
+
+
+            -->
+
+                <div class="formPopup" id="popupFormupdate">
+                    <div class="formContainer">
+                        <h2>"{{ dataset_name }}" - Datensatz verändern</h2>
+                        {% for header in dataset[1][0] %}
+                            <br>
+                            <label>
+                                <strong>{{ header }}</strong>
+                            </label>
+                            <input type="text" id="{{ header }}" class="update-headers" value="{{ header }}">
+                        {% endfor %}
+                        <div class="button-container">
+                            <button type="submit" class="buttonCreate btn btn-success" onclick='updateDataset()'>
+                                Update
+                            </button>
+                            <button type="button" class="buttonDelete btn btn-danger" onclick='closeFormForUpdate()'>
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<div id="popup" class="popup">
+    <div class="popup-content" id="selector-for_spalten">
+        <h2>Spalten für Balkendiagramm auswählen</h2>
+        <div class="item">
+            <select class="select-menu" id="spalten-select">
+                {% for header in dataset[1][0] %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+                <!-- Weitere Optionen hier -->
+            </select>
+            <button class="add-button" onclick="handle_add_spalte();">
+                +
+            </button>
+        </div>
+
+        <button class="btn close-btn" onclick="closePopup()">Schließen</button>
+        <button class="btn submit-btn" onclick="window.location.href='/charts?type=barchart&dataset={{ dataset_name }}' + chart_link;">Bestätigen</button>
+    </div>
+</div>
+
+<div id="pie-popup" class="popup">
+    <div class="popup-content" id="selector-for_pie-spalten">
+        <h2>Spalten für Kuchendiagramm auswählen</h2>
+        <div class="item">
+            <select class="select-menu" id="pie-spalten-select">
+                {% for header in dataset[1][0] %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+                <!-- Weitere Optionen hier -->
+            </select>
+            <button class="add-button" onclick="handle_add_pie_spalte();">
+                +
+            </button>
+        </div>
+
+        <button class="btn close-btn" onclick="closePiePopup()">Schließen</button>
+        <button class="btn submit-btn" onclick="window.location.href='/charts?type=piechart&dataset={{ dataset_name }}' + chart_link;">Bestätigen</button>
+    </div>
+</div>
+
+
+
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    {% for header in dataset[1][0] %}
+                        <th>{{ header }} </th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in dataset[1][1:] %}
+                    <tr id="tr-{{ row }}">
+                        {% for value in row %}
+                            <td id='rowElement'>{{ value }}</td>
+                        {% endfor %}
+                        {% if rechte == "admin" %}
+                            <td>
+                                <button class="buttonUpdate btn btn-primary" id="updateBtn"
+                                        onclick='openFormForUpdate("tr-{{ row }}")'>
+                                    Update
+                                </button>
+                                <button class="buttonDelete btn btn-danger" id="deleteBtn"
+                                        onclick='deleteRow("{{ row[0] }}")'>Delete
+                                </button>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<span style="display: none;">
+    <p id="current-file-name">{{ dataset_name }}</p>
+</span>
+
+<div id="popup-for-export" class="popup">
+    <div class="popup-content" id="selector-for-export-spalten">
+        <h2>Spalten für Export auswählen</h2>
+        <div class="item">
+            <select class="select-menu" id="spalten-select-for-export">
+                {% for header in dataset[1][0] %}
+                    <option value="{{ header }}">{{ header }}</option>
+                {% endfor %}
+                <!-- Weitere Optionen hier -->
+            </select>
+            <button class="add-button" onclick="handle_add_export_spalte();">
+                +
+            </button>
+        </div>
+
+        <button class="btn close-btn" onclick="closeExportPopup()">Schließen</button>
+        <button class="btn submit-btn" onclick="window.location.href='/dataset_export?filename={{ dataset_name }}' + export_link">Bestätigen</button>
+    </div>
+</div>
+
+<script>
+
+const export_popup = document.getElementById('popup-for-export');
+var export_link = ""
+var build_export_link = "&row"
+
+function openExportPopup() {
+    export_popup.style.display = 'block';
+}
+
+function closeExportPopup() {
+    export_popup.style.display = 'none';
+}
+
+function handle_add_export_spalte() {
+    let export_spalten_select = document.getElementById("spalten-select-for-export");
+    let export_spalten = document.getElementById("selector-for-export-spalten")
+
+
+    if (anzahl_spalten < 2) {
+        let new_spalte = '<div class="item"><p>' + export_spalten_select.value + '</p></div>';
+        export_spalten.innerHTML += new_spalte;
+        anzahl_spalten += 1;
+        export_link += build_export_link + anzahl_spalten + '=' + export_spalten_select.value;
+    }
+
+}
+
+</script>
+
+<script>
+
+function openPopup() {
+        var popup = document.getElementById('popup');
+        popup.style.display = 'block';
+    }
+
+function closePopup() {
+    var popup = document.getElementById('popup');
+    popup.style.display = 'none';
+    window.location.reload();
+}
+
+var balkenButton = document.querySelector('.balken-button');
+    balkenButton.addEventListener('click', function () {
+    openPopup();
+});
+
+
+var popup = document.getElementById('pie-popup');
+function openPiePopup() {
+    popup.style.display = 'block';
+}
+
+function closePiePopup() {
+    popup.style.display = 'none';
+    window.location.reload();
+}
+
+var pieButton = document.querySelector('.sunburst-button');
+    pieButton.addEventListener('click', function () {
+    openPiePopup();
+});
+
+
+</script>

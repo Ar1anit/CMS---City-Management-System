@@ -1,0 +1,97 @@
+.vertical-line {
+  margin-left: 33vw;
+  position: relative;
+  width: 1px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.dis-container {
+  margin-left: 30vw;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 40vw;
+  padding: 0;
+}
+
+.dis-container-header {
+  padding: 10px;
+  padding-left: 20px;
+  width: 100%;
+  height: calc(4vh + 10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px 10px 0 0;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.055);
+  display: inline-flex;
+}
+
+.dis-container-title {
+  padding: 20px;
+  width: 100%;
+  height: 3vh;
+  font-size: 24px;
+}
+
+.dis-container-text {
+  padding: 20px;
+  width: 70%;
+}
+
+.dis-container-button {
+  margin: 0 0 20px 20px;
+  width: auto;
+  height: calc(1.5vh + 20px);
+  background-color: white;
+  color: #4d90fe;
+  border: 2px solid #4d90fe;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.dis-container-button:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.dis-container-pfp {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.dis-container-username {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 20px;
+}
+
+.dis-container-username a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #4d90fe;
+  font-weight: 600;
+
+}
+
+.dis-container-username {
+    display: flex;
+    align-items: center;
+  margin-right: 50px;
+}
+
+.dis-container-buttons {
+
+    display: flex;
+    justify-content: space-between; /* Buttons werden am rechten Rand ausgerichtet */
+}
+
+.dis-container-buttons button {
+  border: 1px solid #333333;
+    margin-left: 10px; /* Optionaler Abstand zwischen den Buttons */
+}
+

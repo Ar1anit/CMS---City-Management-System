@@ -1,0 +1,38 @@
+version: "3"
+services:
+  db:
+    container_name: db
+    image: "mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: "SEP"
+      MYSQL_USER: "testuser"
+      MYSQL_PASSWORD: "1234"
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+    networks:
+        sep-network:
+          ipv4_address: 172.20.0.2
+  backend:
+    container_name: backend
+    image: gruppe-b/flask_application:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+    networks:
+        sep-network:
+          ipv4_address: 172.20.0.3
+
+networks:
+    sep-network:
+        driver: bridge
+        ipam:
+          config:
+            - subnet: 172.20.0.0/16

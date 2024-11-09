@@ -1,0 +1,50 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+    <script src="../static/Login.js" defer></script>
+</head>
+
+<header class="header">  <!-- Fügen Sie die Klasse "header" zum Container für den Header hinzu -->
+    <div class="logo">
+        <img src="../static/images/LogoF.svg" alt="Mein Logo">
+    </div>
+    <nav>
+        <!-- Hier können weitere Navigationslinks hinzugefügt werden -->
+    </nav>
+</header>
+
+
+<center>
+    <form method="post">
+        <div class="container">
+
+            <h1 style="margin-top: 40px">
+                <button type="backbtn" onclick="window.history.back()" class="back"><</button>
+                Anmeldung
+            </h1>
+
+            <label for="email"><b>E-Mail</b></label>
+            <input type="text" id="email" placeholder="E-Mail eingeben" name="email">
+            <p id="errorMail"></p>
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" placeholder="Passwort eingeben" name="password">
+            <p id="errorPass"></p>
+            <button type="submit" id="login" name="login">LOGIN</button>
+        </div>
+    </form>
+</center>
+
+<footer class="bottom">
+
+    <div class="Konto erstellen">
+        <button type="reg" onclick="location.href='/register'" class="reg">KONTO ERSTELLEN</button>
+
+    </div>
+</footer>
+
+
+
+

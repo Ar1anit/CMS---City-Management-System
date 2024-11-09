@@ -1,0 +1,8 @@
+flask
+mysql-connector-python
+chardet
+flask-socketio
+simple-websocket
+pyproj
+folium
+datetime

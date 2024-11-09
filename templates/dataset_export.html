@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{ filename}}-Export</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../static/Startpage.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+<body>
+    <button onclick="saveAsPDF()"; class="no-print">Save as PDF</button>
+
+    <h3>Tabellarische Ansicht</h3>
+    <h4>Tabellenname: {{ filename }}</h4>
+    <h4>Exportdatum: {{ export_date }}</h4>
+
+    <div class="container-lg table-design" style="width: 100vw; margin: 0;">
+        <div class="row row-cols-1" style="width: 100vw; margin: 0;">
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <div class="card-header">
+                    <img style="width: 22px; height: 22px;" src="../static/images/dataset.png" alt="icon">
+                    {{ dataset[0] }}
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            {% for header in dataset[1][0] %}
+                                <th>{{ header }} </th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in dataset[1][1:] %}
+                            <tr id="tr-{{ row }}">
+                                {% for value in row %}
+                                    <td id='rowElement'>{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div>
+    <center>
+        <div class="dataset-container mb-5">
+            <div class="profile-header">
+                 <p>Diagramm für: <span id="tb_name">{{ filename }}</span></p>
+        <p>1. Spalte: <span id="spalte1">{{ row1 }}</span></p>
+        <p>2. Spalte: <span id="spalte2">{{ row2 }}</span></p>
+        <p>Diagrammtyp: <span id="type">bar chart</span></p>
+
+            <div class="anzeige-container">
+                <div id="container" style="width: 700px; height: 800px; border-radius: 9px;"></div>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="dataset-container mb-5">
+            <div class="profile-header">
+                 <p>Diagramm für: <span id="tb_name">{{ filename }}</span></p>
+        <p>1. Spalte: {{ row1 }}</p>
+        <p>2. Spalte: {{ row2 }}</p>
+        <p>Diagrammtyp: <span id="type">Pie chart</span></p>
+
+            <div class="anzeige-container">
+                <div id="container2" style="width: 700px; height: 800px; border-radius: 9px;"></div>
+            </div>
+
+        </div>
+        </div>
+    </center>
+
+
+    <script>
+
+        let dataset = document.getElementById("tb_name").innerText;
+        let row = document.getElementById("spalte1").innerText;
+        let row2 = document.getElementById("spalte2").innerText;
+
+        var data = {
+            header: [row, row2],
+            rows: []
+        };
+
+        function get_row_data(row) {
+            fetch('/get_row_data?dataset=' + dataset + '&row=' + row, {
+                method: 'GET',
+                credentials: 'include',
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(message => {
+                    for (var i = 0; i < message.length; i++) {
+                        if (data.rows[i] === undefined) {
+                            data.rows[i] = []
+                            data.rows[i][0] = message[i]
+
+                        } else {
+                            data.rows[i][1] = message[i] === "None" ? 0 : message[i];
+                        }
+                    }
+                    if (data.rows[i - 1][1] !== undefined) {
+                        load_barchart();
+                    }
+                })
+        }
+
+        get_row_data(row);
+        setTimeout(function () {
+            get_row_data(row2);
+        }, 500);
+
+        function load_barchart() {
+            var chart = anychart.bar();
+            chart.data(data);
+            chart.container('container');
+            chart.draw();
+        }
+
+        var pie_data = [];
+        function get_row_data_for_pie_chart(row) {
+
+            fetch('/get_row_data?dataset=' + dataset + '&row=' + row, {
+                method: 'GET',
+                credentials: 'include',
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(message => {
+                    for (var i = 0; i < message.length; i++) {
+                        //console.log(data[0]['x'])
+                        if (pie_data[i] !== undefined) {
+                            pie_data[i]["value"] = message[i]
+                            console.log("VALUE NOT UNDEFINED", pie_data[i])
+                        }
+                        if (pie_data[i] === undefined) {
+                            console.log("MESSAGE[i]", message[i])
+                            pie_data[i] = {x: message[i], value: undefined}
+                            console.log("DATA", pie_data[i])
+                        }
+                    }
+                    if (pie_data[i - 1]['value'] !== undefined) {
+                        draw_pie_chart();
+                    }
+                })
+        }
+
+        get_row_data_for_pie_chart(row);
+        setTimeout(function () {
+            get_row_data_for_pie_chart(row2);
+        }, 500);
+
+        function draw_pie_chart() {
+            chart = anychart.pie(pie_data);
+            chart.innerRadius("30%");
+            chart.container("container2");
+            chart.draw();
+        }
+    </script>
+
+    <script>
+        function saveAsPDF() {
+            // Hide elements that should not be included in the PDF
+            var noPrintElements = document.getElementsByClassName('no-print');
+            for (var i = 0; i < noPrintElements.length; i++) {
+                noPrintElements[i].style.display = 'none';
+            }
+
+            // Open print dialog
+            window.print();
+
+            // Restore the hidden elements after printing is done
+            window.onafterprint = function() {
+                for (var i = 0; i < noPrintElements.length; i++) {
+                    noPrintElements[i].style.display = 'block';
+                }
+            };
+        }
+    </script>
+</div>
+
+</body>
+
+<style type="text/css">
+        @media print {
+            /* Add print-specific styles here */
+            /* Hide elements that should not be included in the PDF */
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</html>

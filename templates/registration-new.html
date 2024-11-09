@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrierung</title>
+    <link href="../static/login-new.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!--<img src="../static/images/e-r-logo.png" id="icon" alt="User Icon"/>-->
+        <img src="../static/images/LogoF.svg" alt="SEP Gruppe-B Logo" id="icon">
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" enctype="multipart/form-data">
+
+      <input type="text" id="email" class="fadeIn second" name="uname" placeholder="E-Mail" required>
+
+        <input type="text" id="Firstname" placeholder="Vorname" class="fadeIn second" name="Firstname" style="width: 41%; margin-right: 1%;" required>
+      <input type="text" id="Lastname" placeholder="Nachname" class="fadeIn second" name="Nachname" style="width: 41%;" required>
+        <input type="password" id="password" class="fadeIn third" name="psw" placeholder="Passwort" required>
+
+      <input type="date" id="Birthdate" placeholder="Geburtsdatum eingeben" class="fadeIn third" name="Birthdate" required>
+
+      <div id="profilepic-wrapper" class="fadeIn third">
+        <label for="ProfilePic" class="custom-file-upload">
+            <img id="preview" src="" alt="Vorschau des Profilbilds"/>
+            <div class="upload-text"><i class="fa fa-cloud-upload"></i>Profilbild (optional)</div>
+        </label>
+        <input type="file" id="ProfilePic" name="ProfilePic" onchange="previewFile()" style="display:none;"/>
+      </div>
+
+    <label style="font-size: medium" class="check_container fadeIn third"><span style="margin-left: 60px">Als Administrator registrieren</span>
+        <input type="checkbox" onchange="admin_reg()" id="is_admin_reg">
+        <span class="checkmark"></span>
+    </label>
+
+        <button class="fadeIn fourth" id="login" name="login" value="user" style="border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">Registrieren</button>
+      <!--<input type="submit" class="fadeIn fourth" id="login" name="submit" value="user">-->
+    </form>
+
+    <!-- Passowrd renew -->
+    <div id="formFooter">
+      Du hast bereits einen Account? <a class="underlineHover" href="/login">Melde dich hier an.</a>
+    </div>
+
+  </div>
+</div>
+<a href="http://www.freepik.com" style="display: none;">Designed by Freepik</a>
+</body>
+
+<script>
+    function previewFile() {
+        var preview = document.getElementById('preview');
+        var file = document.getElementById('ProfilePic').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = "block";
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            preview.style.display = "none";
+        }
+    }
+
+    const birthdateInput = document.getElementById("Birthdate");
+
+</script>
+<script src="../static/RegUserPruefen.js"></script>
+
+{% include 'cookies.html' %}
+</html>

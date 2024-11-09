@@ -1,0 +1,244 @@
+
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+}
+.header img {
+  float: left;
+  width: 80px; /*  Breite des Logos */
+  height: 80px; /*  Höhe des Logos, automatische Anpassung an das Seitenverhältnis */
+
+  margin-top: 20px; /* Beispiel: Abstand vom oberen Rand */
+  margin-bottom: 10px; /* Beispiel: Abstand vom unteren Rand */
+
+}
+.header{
+  margin-top: -11px;
+  margin-right: -8.2px;
+  height: 110px;
+  background: linear-gradient(to left, #000000 63%, #FFFFFF );
+ 
+
+}
+.bottom{background-color:#030000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55px
+}
+form {
+  border: 1px solid #ffffff;
+  margin-right: 0;
+  margin-left: 0;
+}
+h1{
+  color: #030000;
+
+
+
+
+
+
+}
+.back {
+  width: auto;
+  height: auto;
+  padding: 10px 15px;
+  background-color: #030000;
+
+
+}
+
+
+
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=date], input[type=file], input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 9px;
+}
+/* Set a style for all buttons */
+button {
+  background-color: #030000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 9px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+  background-color: white;
+  color: black;
+}
+/* Add padding to containers */
+.container {
+  text-align: left;
+  padding: 20px;
+  width: 550px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+}
+.logo{
+
+  filter: invert(0%);
+  transition: filter 0.5s;
+  border: 2px solid ;
+}
+.logo:hover{
+  filter: invert(50%);
+}
+
+.custom-file-upload {
+  display: inline-block;
+  position: relative;
+  width: 548px;
+  height: 100px;
+  border: 2px solid #ccc;
+  border-radius: 9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+}
+
+.custom-file-upload img {
+  display: none;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.custom-file-upload .upload-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}
+
+.custom-file-upload:hover {
+  border-color: #a8a8a8;
+
+}
+
+.custom-file-upload:hover .upload-text {
+  color: #666;
+}
+.reg{
+
+  margin-bottom: 15px;
+  margin-left: 7px;
+  width: auto;
+  font-size: smaller;
+}
+
+.hide {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.show {
+  max-height: 1000px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.check_container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+
+.check_container {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.check_container input {
+  display: none;
+}
+
+.check_container .checkmark {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #eee;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.check_container input:checked + .checkmark {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.check_container .checkmark:after {
+  content: "";
+  display: none;
+}
+
+.check_container input:checked + .checkmark:after {
+  display: block;
+}
+
+.check_container .checkmark:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: none;
+  margin: 6px 0 0 6px;
+}
+#birthdate-wrapper,
+#profilepic-wrapper {
+  transition:  0.5s ease-in;
+  transition:0.5s ease-out;
+}

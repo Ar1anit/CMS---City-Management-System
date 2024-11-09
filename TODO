@@ -1,0 +1,10 @@
+## TODO ##
+[X] User / Chat Daten müssen persistent gespeichert werden
+
+
+1.: Docker Container starten
+
+1.1: docker save backend -o application.tar
+1.1: docker save gruppe-b/flask_application:latest -o application.tar
+
+2.: docker load --input application.tar

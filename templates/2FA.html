@@ -1,0 +1,122 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
+</head>
+
+<header class="header"  >
+    <div class="logo">
+        <img src="../static/images/LogoF.svg" alt="Mein Logo">
+    </div>
+    <nav>
+        <!-- Hier können weitere Navigationslinks hinzugefügt werden -->
+    </nav>
+</header>
+
+<!--
+<footer class="bottom" >
+    <div class="Konto erstellen">
+        <button type="reg" onclick="location.href='404'" class="reg">ICH HABE KEINEN CODE ERHALTEN</button>
+
+    </div>
+</footer>-->
+<center>
+    <div class="Container" >
+
+        <h1 style="margin-top: 40px"><button type="backbtn" onclick="history.back()" class="back"><</button> Zwei-Faktor-Authentifizierung</h1>
+
+        <form method="post" id="login-form">
+        <label
+                for="password">Auf die von Ihnen angegebene E-Mail-Adresse wurde ein 5-stelliger Code gesendet.
+
+        </label>
+        <input style="width: 550px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        box-sizing: border-box; " type= "password" id="password" name="password" placeholder="z.B. 12345">
+        <p id="error-message"></p>
+        <button type="submit" id ="Bestaetigen">BESTÄTIGEN</button>
+        </form>
+    </div>
+    <div class="Wählen">
+    </div>
+</center>
+
+<style>
+
+
+
+
+    .Wählen{
+        display: grid;
+         /* teilt die Box in 2 Spalten auf */
+        gap: 10px; /* fügt einen Abstand zwischen den Buttons hinzu */
+        width: 550px;
+        margin-top: -75px;
+        margin-right: 550px;
+        margin-left: 20px;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0px;
+
+
+
+    }
+    Label{
+        display: block;
+        font-weight:bold;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<script>
+   // const form = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+   const errorMsg = document.getElementById("error-message");
+  //  const loginButton = document.getElementById('Bestaetigen');
+
+  /*  loginButton.addEventListener('click',(event)=>{
+        event.preventDefault();// Verhindert das Standardverhalten des Formulars, um die Seite nicht neu zu laden
+        const password = passwordInput.value;
+        // wir fügen hier Ihre Logik für die Authentifizierung ein
+        // Verwenden Sie z.B. eine API oder eine Datenbank,
+        // um Benutzernamen und Passwörter zu überprüfen
+   // function pruefCode(password) {
+        if (password === 12345) {
+            alert('Erfolgreich angemeldet!');
+
+            // Hier können wir den Benutzer zur nächsten Seite weiterleiten oder weitere Aktionen ausführen
+
+        } else {
+            alert('Falsches Code');
+        }
+
+    }); */
+    function pruefCode() {
+
+        const password = passwordInput.value;
+
+        if(password == 12345){
+            alert("Willkommen in Gruppe B seite");
+          //  document.getElementById("error-message").innerHTML = "Sie sind drin"; //(Wenn ohne const als errorMsg)
+           // errorMsg.innerHTM = "Sie sind drin";
+            window.location.href = 'StartpageLogged.html';
+
+
+        }
+        else{
+           // alert("falsches");
+          // document.getElementById("error-message").innerHTML = "Falsches Code";
+            errorMsg.innerHTML= "Der Code ist falsch, überprüfen Sie Ihre Eingaben";
+            errorMsg.style.color = 'red';
+        }
+    }
+
+</script>

@@ -1,0 +1,98 @@
+<body>
+
+<div id="cookies-popup" class="">
+    <div id="cookies-content">
+      <p style="font-size: 20px;">Diese Seite verwendet Cookies. Stelle sicher, dass du Cookies aktiviert hast, um diese Seite verwenden zu können.</p>
+      <div id="cookies-buttons">
+        <button id="decline-cookies">Nicht notwendige Cookies ablehnen</button>
+        <button id="accept-cookies">Notwendige Cookies akzeptieren</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      var cookiesPopup = document.getElementById("cookies-popup");
+      var acceptCookiesBtn = document.getElementById("accept-cookies");
+      var declineCookiesBtn = document.getElementById("decline-cookies");
+
+      if (localStorage.getItem("cookiesAccepted") !== "true" && localStorage.getItem("cookiesDeclined") !== "true") {
+        cookiesPopup.style.display = "block";
+      }
+
+      acceptCookiesBtn.addEventListener("click", function() {
+        localStorage.setItem("cookiesAccepted", "true");
+        cookiesPopup.style.display = "none";
+      });
+
+      declineCookiesBtn.addEventListener("click", function() {
+        localStorage.setItem("cookiesDeclined", "true");
+        cookiesPopup.style.display = "none";
+      });
+
+    });
+
+</script>
+</body>
+
+<style>
+#cookies-popup {
+    display: none;
+    border-radius: 10px;
+  position: fixed;
+  top: calc(100% - 11vh);
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20vw;
+  height: 20vh;
+  background-color: #f1f1f1;
+  padding: 25px;
+  text-align: center;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    animation: 1s fadeIn
+}
+
+#cookies-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+#cookies-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#accept-cookies {
+  background-color: #56baed;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+    border-radius: 10px;
+}
+
+#decline-cookies {
+  background-color: #c12828;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+</style>

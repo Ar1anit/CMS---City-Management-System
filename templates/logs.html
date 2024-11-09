@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEP Logs</title>
+</head>
+<body>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .log-container {
+            width: 60vw;
+            height: 100vh;
+            margin-left: 20vw;
+            background-color: rgba(240, 240, 240, 0.1);
+            box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5), 10px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            overflow: auto;
+        }
+
+        .log-container::before,
+        .log-container::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 10px;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .log-container::before {
+          left: -10px;
+          box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.5);
+          /* Applies shadow on the left side */
+        }
+
+        .log-container::after {
+          right: -10px;
+          box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5);
+          /* Applies shadow on the right side */
+        }
+
+        .elem {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .elem:nth-child(even) {
+            margin-top: 50px;
+            color: red;
+            font-size: 24px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #15202b;
+            }
+
+            .elem {
+                color: white;
+            }
+
+            .log-container {
+                width: 60vw;
+                height: 100vh;
+                margin-left: 20vw;
+                background-color: rgba(240, 240, 240, 0.1);
+                box-shadow: -10px 0px 10px rgba(255, 255, 255, 0.5), 10px 0px 10px rgba(255, 255, 255, 0.5);
+                overflow: auto;
+                padding: 10px;
+            }
+
+            .log-container::before,
+            .log-container::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 10px;
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+
+            .log-container::before {
+                left: -10px;
+                box-shadow: 10px 0px 10px rgba(255, 255, 255, 0.5);
+                /* Applies shadow on the left side */
+            }
+
+            .log-container::after {
+                right: -10px;
+                box-shadow: -10px 0px 10px rgba(255, 255, 255, 0.5);
+                /* Applies shadow on the right side */
+            }
+        }
+    </style>
+
+    <div class="log-container">
+        {% for row in log %}
+            <div class="elem">{{ row }}</div>
+        {% endfor %}
+    </div>
+</body>
+</html>
